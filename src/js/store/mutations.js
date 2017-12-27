@@ -1,0 +1,51 @@
+import SYSCONF from '../util/config'
+export const mutations = {
+	create(state, item) {
+		state.todos.push(item)
+	},
+	del(state, item) {
+		const idx = state.todos.findIndex((todo) => {
+			return todo === item
+		})
+		if (idx !== -1) {
+			state.todos.splice(idx, 1)
+		}
+	},
+	delByType(state, type) {
+		const tmpArray = state.todos.filter((todo) => {
+			return todo.type !== type
+		})
+		state.todos = tmpArray
+	},
+	update(state, payload) {
+		const curr = state.todos.find((todo) => {
+			return todo === payload.todo
+		})
+		if (curr) {
+			curr.value = payload.value;
+		}
+	},
+	toggle(state, item) {
+		const curTodo = state.todos.find((todo) => {
+			return todo === item
+		})
+		curTodo.type = curTodo.type === SYSCONF.STATUS ?
+			SYSCONF.OPPRSTATUS : SYSCONF.STATUS
+	},
+	/**
+	 * [toggleAll]
+	 * @param  {[type]} state       [Object]
+	 * @param  {[type]} optionState [Boolean]
+	 * @return {[type]}             [description]
+	 */
+	toggleAll(state, optionState) {
+		optionState = optionState === true ?
+			SYSCONF.STATUS : SYSCONF.OPPRSTATUS
+		state.todos.map((item) => {
+			return item.type = optionState
+		})
+	},
+	fill(state, data) {
+		state.todos = data;
+	}
+}
