@@ -1,0 +1,14 @@
+.nav {
+	padding: 10px 15px;
+	color: #777;
+	border-bottom: 1px solid #ededed;
+}
+.nav button {
+	border: 1px solid transparent;
+	padding: 3px 7px;
+	margin: 3px;
+	cursor: pointer;
+}
+.nav button:hover{
+	border-color:rgba(175, 47, 47, 0.2);
+}

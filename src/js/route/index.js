@@ -12,9 +12,9 @@ export default new VueRouter({
 		props: (route) => {
 			const active = route.params.active
 			if (active) {
-				store.state.bar = active
+				store.state.todo.bar = active
 			} else {
-				store.state.bar = SYSCONF.ALL
+				store.state.todo.bar = SYSCONF.ALL
 			}
 		}
 	}]

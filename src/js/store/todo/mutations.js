@@ -1,4 +1,4 @@
-import SYSCONF from '../util/config'
+import SYSCONF from '../../util/config'
 export const mutations = {
 	create(state, item) {
 		state.todos.push(item)
