@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from '../lib/vuex'
 import todo from './todo'
 import history from './history'
 
@@ -9,7 +9,7 @@ import History from '../plugins/history'
 Vue.use(Vuex)
 export default new Vuex.Store({
 	plugins: [Pstore, History],
-	modules:{
+	modules: {
 		todo,
 		history
 	}

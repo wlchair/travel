@@ -14,6 +14,7 @@ export default {
 	namespaced: true,
 	state: {
 		// {
+		//	id: 唯一标识
 		// 	type: active,completed
 		// 	value
 		// }

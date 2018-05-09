@@ -5,8 +5,8 @@ export const actions = {
 		commit
 	}, data) {
 		return new Promise((resolve, reject) => {
-			commit('create', data);
-			resolve();
+			commit('create', data)
+			resolve()
 		})
 	},
 	reduceTodo({
@@ -49,13 +49,11 @@ export const actions = {
 			resolve()
 		})
 	},
-	async restore({
+	async restore ({
 		commit
-	}) {
+	}){
 		await DB.fetchAllInfo().then((ret) => {
-			if (ret.length) {
-				commit('fill', ret);
-			}
+			commit('fill', ret)
 		}).catch((ret) => {
 			throw new Error(ret)
 		})

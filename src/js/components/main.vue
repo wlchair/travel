@@ -4,13 +4,13 @@
             :checked="checkboxStatus">
         <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
-            <view-task v-for="(item,idx) in statusList" :item="item" :key="idx" />
+            <view-task v-for="(item,idx) in statusList" :item="item" :key="item.id" />
         </ul>
     </section>
 </template>
 <script>
-import {createNamespacedHelpers} from 'vuex'
-import viewTask from './task.vue'
+import { createNamespacedHelpers } from '../lib/vuex'
+import ViewTask from './task.vue'
 import SYSCONF from '../util/config'
 
 const { mapGetters, mapActions } = createNamespacedHelpers('todo')
@@ -39,7 +39,7 @@ export default {
     computed,
     methods,
     components: {
-        viewTask
+        ViewTask
     }
 }
 </script>

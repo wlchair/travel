@@ -11,14 +11,10 @@ import {
 export default {
 	namespaced: true,
 	state: {
-		// cmds:[{
-		// 	type: '动作类型'
-		// }]
-		cmds: [],
-		// acts: [{
-		// 	before: '之前的状态'
-		// 	now: '当前的状态'
-		// }]
+		// acts:{
+		// 	cmd:'',
+		// 	before:[]
+		// }
 		acts: [],
 		point: -1
 	},

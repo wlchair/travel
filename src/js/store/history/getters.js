@@ -12,8 +12,13 @@ export const getters = {
 			}
 			return {
 				act: state.acts[point],
-				cmd: state.cmds[point]
 			}
 		}
+	},
+	// 判断当前指针是否指向历史的最后一位
+	isLastPoint(state){
+		let len = state.acts.length;
+		let size = state.point + 1
+		return len === size
 	}
 }

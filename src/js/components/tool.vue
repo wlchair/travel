@@ -1,15 +1,16 @@
 <template>
     <nav class="nav">
-        <button class="redo"> redo </button>
-        <button class="undo" @click="undoHistory('UNDO')"> undo </button>
+        <button class="redo" @click="redoOperation('REDO')"> redo </button>
+        <button class="undo" @click="undoOperation('UNDO')"> undo </button>
         <button class="readOnly"> readOnly </button>
     </nav>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from '../lib/vuex'
 const methods = {
 	...mapActions('history',{
-		undoHistory: 'undoAct'
+		undoOperation: 'changeAction',
+		redoOperation: 'changeAction'
 	})
 }
 export default {

@@ -9,7 +9,7 @@
     </li>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from '../lib/vuex'
 import SYSCONF from '../util/config'
 const computed = {
     isChecked: function() {

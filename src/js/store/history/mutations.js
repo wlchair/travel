@@ -1,10 +1,6 @@
 export const mutations = {
-	create(state, {
-		cmd,
-		act
-	}) {
-		state.cmds.push(cmd)
-		state.acts.push(act)
+	create(state, item) {
+		state.acts.push(item)
 		state.point++
 	},
 	updatePoint(state, type) {
@@ -17,10 +13,16 @@ export const mutations = {
 				break;
 		}
 	},
+	updateActs() {
+		let delIdx = state.point,
+			delNum = state.acts.length - 1 - delIdx;
+		state.acts.splice(delIdx, delNum, 0)
+		console.log(state.point)
+		console.log(JSON.stringify(state.acts))
+	},
 	showInfo(state) {
 		return {
-			cmds: state.cmds,
-			acts: state.actions,
+			acts: state.acts,
 			point: state.point
 		}
 	}
