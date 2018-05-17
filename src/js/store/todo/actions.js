@@ -1,59 +1,65 @@
 import DB from '../../util/db'
-
+import send from '../../util/send'
+import CONFIG from '../../util/config'
 export const actions = {
 	newTodo({
 		commit
 	}, data) {
-		return new Promise((resolve, reject) => {
+		 return send({}, function() {
 			commit('create', data)
-			resolve()
 		})
 	},
 	reduceTodo({
 		commit
 	}, todo) {
-		return new Promise((resolve, reject) => {
+		return send({}, function() {
 			commit('del', todo)
-			resolve()
-		})
+		});
 	},
 	reduceTodosByType({
 		commit
 	}, originType) {
-		return new Promise((resolve, reject) => {
+		return send({}, function() {
 			commit('delByType', originType)
-			resolve()
 		})
 	},
 	modifyTodo({
 		commit
 	}, payload) {
-		return new Promise((resolve, reject) => {
+		return send({}, function() {
 			commit('update', payload)
-			resolve()
 		})
 	},
 	modifyState({
 		commit
 	}, todo) {
-		return new Promise((resolve, reject) => {
-			commit('toggle', todo)
-			resolve()
+		return send({}, function() {
+			commit('toggle', todo);
 		})
 	},
 	modifyAllState({
 		commit
 	}, originState) {
-		return new Promise((resolve, reject) => {
+		return send({}, function() {
 			commit('toggleAll', originState)
-			resolve()
 		})
 	},
-	async restore ({
+	modifyActions({
 		commit
-	}){
-		await DB.fetchAllInfo().then((ret) => {
-			commit('fill', ret)
+	}) {
+		return send({}, function() {
+			commit('toggleRead')
+		})
+	},
+	async restore({
+		commit
+	}) {
+		return await DB.fetchAllInfo().then((ret) => {
+			CONFIG.RECORDMUTATION = false;
+			ret.forEach((item) => {
+				commit('create', item)
+			})
+			CONFIG.RECORDMUTATION = true;
 		}).catch((ret) => {
 			throw new Error(ret)
 		})

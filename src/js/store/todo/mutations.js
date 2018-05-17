@@ -27,6 +27,9 @@ export const mutations = {
 			curr.value = payload.value;
 		}
 	},
+	toggleRead(state) {
+		state.readOnly = !state.readOnly
+	},
 	toggle(state, item) {
 		const curTodo = state.todos.find((todo) => {
 			return todo.id === item.id
@@ -46,8 +49,5 @@ export const mutations = {
 		state.todos.map((item) => {
 			return item.type = optionState
 		})
-	},
-	fill(state, data) {
-		state.todos = data;
 	}
 }

@@ -14,7 +14,7 @@
     </footer>
 </template>
 <script>
-import {mapActions} from '../lib/vuex'
+import { mapActions } from '../lib/vuex'
 import SYSCONF from '../util/config'
 import { capitalize } from '../filters/capitalize'
 import { complex } from '../filters/complex'
@@ -32,14 +32,12 @@ const computed = {
     }
 }
 const methods = {
-    ...mapActions({
-        clearComplete: 'todo/reduceTodosByType(SYSCONF.STATUS)'
-    })
-    // clearComplete() {
-    // this.$store.dispatch('todo/reduceTodosByType',
-    //     SYSCONF.STATUS
-    // )
-    // }
+    clearComplete() {
+        var $this = this;
+        this.$store.dispatch('todo/reduceTodosByType',
+            SYSCONF.STATUS
+        )
+    }
 }
 export default {
     data() {

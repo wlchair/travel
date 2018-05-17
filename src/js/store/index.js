@@ -5,10 +5,10 @@ import history from './history'
 
 import Pstore from '../plugins/storage'
 import Inspect from '../plugins/inspect'
-import History from '../plugins/history'
+import Record from '../plugins/record'
 Vue.use(Vuex)
 export default new Vuex.Store({
-	plugins: [Pstore, History],
+	plugins: [Inspect, Record, Pstore],
 	modules: {
 		todo,
 		history

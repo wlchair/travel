@@ -1,14 +1,18 @@
 export default store => {
+	const NOTLOCKACTIONS = ["todo/restore", "todo/lockActions"]
 	// before action
-	store.subscribeAction((action, state) => {
-		if (action.type === 'newTodo' &&
-			typeof parseInt(action.payload.value) === "number") {
-			// throw new Error('inspect error')
+	store.subscribeBeforeAction((action, state) => {
+		if (state.todo.readOnly) {
+			// 符合要求的请求，返回false
+			// 都不符合，返回true
+			return !(NOTLOCKACTIONS.every((item) => {
+				if (action.type === item) {
+					return false;
+				} else {
+					return true
+				}
+			}))
 		}
-	})
-	store.subscribeAction((action, state) => {
-		if (state.readOnly) {
-			// throw new Error('readOnly table')
-		}
+
 	})
 }

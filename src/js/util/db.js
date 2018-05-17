@@ -6,7 +6,6 @@ export default {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				storage.setItem(SYSCONF.DBNAME, data)
-				// console.log(storage.getItem(SYSCONF.DBNAME))
 				resolve()
 			}, 500)
 		})

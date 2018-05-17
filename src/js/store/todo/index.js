@@ -20,7 +20,7 @@ export default {
 		// }
 		todos: [],
 		bar: SYSCONF.ALL,
-		readOnly: true
+		readOnly: false
 	},
 	getters,
 	mutations,

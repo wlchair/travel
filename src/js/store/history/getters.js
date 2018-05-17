@@ -1,22 +1,32 @@
 export const getters = {
-	historyItem(state) {
+	itemByType(state) {
 		return function(type) {
-			var point;
+			// 当undo时，获取当前point，就是需要重置的对象
+			// 当redo时，需要在当前的point + 1，就是需要的对象
+			// point肯定肯定不是在最后一位
+			let point = state.point,
+				len = state.acts.length,
+				ret = false;
 			switch (type) {
 				case 'UNDO':
-					point = state.point;
+					if ((point === -1 && len === 0) &&
+						(point === 0 && len > 0)) {
+						return ret
+					}
 					break;
 				case 'REDO':
-					point = state.point + 1;
+					if (len - 1 > point) {
+						ret = ++point
+					} else {
+						return ret
+					}
 					break;
 			}
-			return {
-				act: state.acts[point],
-			}
+			return state.acts[point]
 		}
 	},
 	// 判断当前指针是否指向历史的最后一位
-	isLastPoint(state){
+	isLastPoint(state) {
 		let len = state.acts.length;
 		let size = state.point + 1
 		return len === size

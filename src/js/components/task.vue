@@ -33,7 +33,6 @@ const methods = {
     },
     tabToEdit() {
         this.isEditing = true
-
     }
 }
 export default {

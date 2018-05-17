@@ -6,19 +6,20 @@
 </template>
 <script>
 import SYSCONF from '../util/config'
-
+import {isPromise} from '../util/judge'
 export default {
     methods: {
         createInfo(e) {
             const texts = e.target.value.trim()
-            this.$store.dispatch('todo/newTodo', {
+            let ret = this.$store.dispatch('todo/newTodo', {
                 value: texts,
                 type: SYSCONF.STATUS
-            }).then(() => {
-                e.target.value = ""
-            }).catch((e) => {
-                new Error(e)
-            })
+            });
+            if(isPromise(ret)){
+                ret.then(()=>{
+                    e.target.value = ""
+                })
+            }
         }
     }
 }
