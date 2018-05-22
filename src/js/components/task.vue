@@ -32,7 +32,9 @@ const methods = {
         })
     },
     tabToEdit() {
-        this.isEditing = true
+        if(!this.$store.state.todo.readOnly){
+            this.isEditing = true    
+        }
     }
 }
 export default {

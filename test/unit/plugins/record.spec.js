@@ -19,7 +19,7 @@ describe('record > ', () => {
 		initData = {
 			todo: {
 				todos: [],
-				bar: SYSCONF.ALL,
+				bar: 'completed',
 				readOnly: false
 			},
 			history: {
@@ -27,7 +27,7 @@ describe('record > ', () => {
 				point: -1
 			}
 		};
-	beforeEach(() => {
+	beforeAll(() => {
 		store = new Vuex.Store({
 			plugins: [Record],
 			modules: {
@@ -39,17 +39,19 @@ describe('record > ', () => {
 	afterEach(() => {
 		store.replaceState(initData)
 	});
-	it('normal input task', () => {
+	it('normal input task', (done) => {
 		store.dispatch('todo/newTodo', completeItem).then(() => {
 			expect(store.state.history.acts.length).toBe(1);
+			done()
 		})
 	});
-	it('not record action', () => {
-		store.dispatch('todo/newTodo', completeItem).then(() => {
-			store.dispatch('history/changeAction', 'UNDO').then(() => {
-				expect(store.state.todo.todos.length).toEqual(0);
-			})
-		})
+	it('not record action', (done) => {
+		(async function(){
+			await store.dispatch('todo/newTodo', completeItem)
+			await store.dispatch('history/changeAction', 'UNDO')
+			expect(store.state.todo.todos.length).toEqual(0)
+			done()
+		}())
 	});
 	it('not lastPosition, insert new Todo', () => {
 		(async function() {

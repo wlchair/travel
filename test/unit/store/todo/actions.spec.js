@@ -24,7 +24,7 @@ describe('actions > ', () => {
 			todos: [],
 			readOnly: false
 		}
-	beforeEach(() => {
+	beforeAll(() => {
 		store = new Vuex.Store({
 			state: {
 				todos: [],
