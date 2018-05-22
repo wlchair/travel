@@ -1,4 +1,4 @@
-import SYSCONF from '../util/config'
+import SYSCONF from '../../util/config'
 export const getters = {
 	todosByType(state) {
 		const todos = state.todos

@@ -1,5 +1,5 @@
 var webpack = require('webpack'),
-unitConfig = require('./webpack.unit');
+	unitConfig = require('./webpack.unit');
 module.exports = function(config) {
 	config.set({
 		basePath: '',
@@ -7,7 +7,7 @@ module.exports = function(config) {
 		files: [
 			'test/unit/**/*.spec.js'
 		],
-		exclude: [],
+		exclude: ['src/js/lib/*.js'],
 		preprocessors: {
 			'test/unit/**/*.spec.js': ['webpack']
 		},
@@ -24,6 +24,8 @@ module.exports = function(config) {
 		coverageIstanbulReporter: {
 			reports: ['text-summary', 'html'],
 			fixWebpackSourcePaths: true
-		}
+		},
+		browserDisconnectTimeout: 20000,
+		browserNoActivityTimeout: 20000
 	})
 }

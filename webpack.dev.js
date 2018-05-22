@@ -23,7 +23,7 @@ const baseConfig = merge(base, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime',
       filename: 'runtime.js'
-    })
+    }),
   ]
 })
 baseConfig.module.rules[0].loader = 'vue-loader'

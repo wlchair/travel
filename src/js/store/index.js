@@ -1,29 +1,16 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
-import Pstore from '../plugins/storage'
-import SYSCONF from '../util/config'
-import {
-	getters
-} from './getters'
-import {
-	mutations
-} from './mutations'
-import {
-	actions
-} from './actions'
-Vue.use(Vuex)
+import Vuex from '../lib/vuex'
+import todo from './todo'
+import history from './history'
 
+import Pstore from '../plugins/storage'
+import Inspect from '../plugins/inspect'
+import Record from '../plugins/record'
+Vue.use(Vuex)
 export default new Vuex.Store({
-	plugins: [Pstore],
-	state: {
-		// {
-		// 	type: active,completed
-		// 	value
-		// }
-		todos: [],
-		bar: SYSCONF.ALL
-	},
-	getters,
-	mutations,
-	actions
+	plugins: [Inspect, Record, Pstore],
+	modules: {
+		todo,
+		history
+	}
 })

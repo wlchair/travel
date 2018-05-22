@@ -1,14 +1,18 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from '../../../../src/js/lib/vuex'
 import {
 	mutations
-} from '../../../src/js/store/mutations'
-import SYSCONF from '../../../src/js/util/config'
+} from '../../../../src/js/store/todo/mutations'
+import SYSCONF from '../../../../src/js/util/config'
 Vue.use(Vuex)
 describe('mutations > ', () => {
 
-	let completeItem, activeItem,store
-
+	let completeItem, activeItem, store,
+		initState = {
+			todos: [],
+			bar: SYSCONF.ALL,
+			readOnly: false
+		}
 	beforeEach(() => {
 		completeItem = {
 			value: 'zhangsan',
@@ -21,21 +25,25 @@ describe('mutations > ', () => {
 		store = new Vuex.Store({
 			state: {
 				todos: [],
-				bar: SYSCONF.ALL
+				bar: SYSCONF.ALL,
+				readOnly: false
 			},
 			mutations
 		})
 	});
+
 	afterEach(function() {
-		store.state.todos = []
+		store.replaceState(initState);
 	});
 	it('create', () => {
 		store.commit('create', completeItem)
-		expect(store.state.todos[0]).toEqual(completeItem);
+		expect(store.state.todos[0].value).toEqual(completeItem.value);
+		expect(store.state.todos[0].type).toEqual(completeItem.type);
 	})
 	it('del', () => {
 		store.commit('create', completeItem)
 		store.commit('del', store.state.todos[0])
+
 		expect(store.state.todos).toEqual([])
 	})
 	it('delByType', () => {
@@ -53,19 +61,23 @@ describe('mutations > ', () => {
 		})
 		expect(store.state.todos[0].value).toBe('updateInfo');
 	});
-	describe('toggle active and complete >', () => {
-		it('toggle to active', () => {
+	it('toggleread > ', () => {
+		store.commit('toggleRead')
+		expect(store.state.readOnly).toEqual(true)
+	});
+	describe('toggle active and complete > ', () => {
+		it('to active', () => {
 			store.commit('create', completeItem)
 			const currentTodo = store.state.todos[0]
-			currentTodo.type = 'active'
 			store.commit('toggle', currentTodo)
+			currentTodo.type = 'active'
 			expect(store.state.todos[0].type).toBe(currentTodo.type);
 		});
-		it('toggle to complete', () => {
+		it('to complete', () => {
 			store.commit('create', activeItem)
 			const currentTodo = store.state.todos[0]
-			currentTodo.type = 'complete'
 			store.commit('toggle', currentTodo)
+			currentTodo.type = 'complete'
 			expect(store.state.todos[0].type).toBe(currentTodo.type);
 		});
 	});
@@ -86,10 +98,5 @@ describe('mutations > ', () => {
 			expect(currentTodos[0].type).toEqual('complete');
 			expect(currentTodos[1].type).toEqual('complete');
 		});
-	});
-	it('fill', () => {
-		const data = [completeItem, activeItem]
-		store.commit('fill', data)
-		expect(store.state.todos).toEqual(data);
 	});
 });

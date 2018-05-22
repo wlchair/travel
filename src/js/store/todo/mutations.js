@@ -1,11 +1,13 @@
-import SYSCONF from '../util/config'
+import SYSCONF from '../../util/config'
+import BuildID from '../../util/id'
 export const mutations = {
 	create(state, item) {
+		item.id = BuildID();
 		state.todos.push(item)
 	},
 	del(state, item) {
 		const idx = state.todos.findIndex((todo) => {
-			return todo === item
+			return todo.id === item.id
 		})
 		if (idx !== -1) {
 			state.todos.splice(idx, 1)
@@ -19,15 +21,18 @@ export const mutations = {
 	},
 	update(state, payload) {
 		const curr = state.todos.find((todo) => {
-			return todo === payload.todo
+			return todo.id === payload.todo.id
 		})
 		if (curr) {
 			curr.value = payload.value;
 		}
 	},
+	toggleRead(state) {
+		state.readOnly = !state.readOnly
+	},
 	toggle(state, item) {
 		const curTodo = state.todos.find((todo) => {
-			return todo === item
+			return todo.id === item.id
 		})
 		curTodo.type = curTodo.type === SYSCONF.STATUS ?
 			SYSCONF.OPPRSTATUS : SYSCONF.STATUS
@@ -44,8 +49,5 @@ export const mutations = {
 		state.todos.map((item) => {
 			return item.type = optionState
 		})
-	},
-	fill(state, data) {
-		state.todos = data;
 	}
 }
