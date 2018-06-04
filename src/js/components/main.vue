@@ -33,9 +33,6 @@ const methods = mapActions({
 })
 
 export default {
-    created() {
-        this.$store.dispatch('todo/restore')
-    },
     computed,
     methods,
     components: {

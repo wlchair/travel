@@ -25,7 +25,7 @@ export default {
 				} else {
 					reject(ret)
 				}
-			}, 1000)
+			}, 5000)
 		})
 	}
 }
