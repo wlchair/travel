@@ -2,7 +2,7 @@ module.exports = {
   'todomvc': function (browser) {
     browser
     .url('http://localhost:8886')
-      .waitForElementVisible('.todoapp', 1000)
+      .waitForElementVisible('.todoapp', 10000)
       .assert.notVisible('.main')
       .assert.notVisible('.footer')
       .assert.count('.filters .selected', 1)
