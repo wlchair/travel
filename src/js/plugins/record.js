@@ -6,8 +6,6 @@ import {
 export default store => {
 	let historyItem;
 	store.subscribeBeforeAction((action, state) => {
-		console.log(store.state.todo.bar)
-		console.log(action.type)
 		CONFIG.NOTRECORDACTIONS.every((item) => {
 			if (action.type === item) {
 				CONFIG.RECORDACTION = false;

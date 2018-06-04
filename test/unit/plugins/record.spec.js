@@ -46,7 +46,7 @@ describe('record > ', () => {
 		})
 	});
 	it('not record action', (done) => {
-		(async function(){
+		(async function (){
 			await store.dispatch('todo/newTodo', completeItem)
 			await store.dispatch('history/changeAction', 'UNDO')
 			expect(store.state.todo.todos.length).toEqual(0)
