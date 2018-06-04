@@ -1,7 +1,6 @@
 var spawn = require('cross-spawn')
 var args = process.argv.slice(2)
-
-var server = args.indexOf('--dev') > -1 ? null : require('../../server')
+var server = args.indexOf('--dev') > -1 ? null : require('../../dev-server')
 
 if (args.indexOf('--config') === -1) {
 	args = args.concat(['--config', 'test/e2e/nightwatch.config.js'])
