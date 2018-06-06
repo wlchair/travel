@@ -15,6 +15,7 @@ const baseConfig = merge(base, {
     return entries
   }, {}),
   output: {
+    publicPath: '/dist/',
     filename: 'bundle.web.js',
     chunkFilename: '[name].chunk.js'
   },

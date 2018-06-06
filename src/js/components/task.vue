@@ -13,7 +13,7 @@ import { mapActions } from '../lib/vuex'
 import SYSCONF from '../util/config'
 const computed = {
     isChecked: function() {
-        return this.item.type === SYSCONF.STATUS ? true : false
+        return this.item.type === SYSCONF.STATUS ? false : true
     }
 }
 const methods = {
@@ -24,12 +24,19 @@ const methods = {
     doneTodo(e) {
         const texts = e.target.value.trim();
         const { item } = this
-        this.$store.dispatch('todo/modifyTodo', {
-            value: texts,
-            todo: item
-        }).then(() => {
-            this.isEditing = false
-        })
+        if(texts){
+            this.$store.dispatch('todo/modifyTodo', {
+                value: texts,
+                todo: item
+            }).then(() => {
+                this.isEditing = false
+            })
+        }else{
+            this.$store.dispatch('todo/reduceTodo', item)
+            .then(() => {
+                this.isEditing = false
+            })
+        }
     },
     tabToEdit() {
         if(!this.$store.state.todo.readOnly){

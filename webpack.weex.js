@@ -6,6 +6,7 @@ const merge = require('webpack-merge')
 const baseConfig = merge(base, {
   entry: './src/js/app.js',
   output: {
+    publicPath: '/dist/',
     filename: 'bundle.weex.js',
     chunkFilename: '[name].chunk.js'
   },

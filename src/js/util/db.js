@@ -7,7 +7,7 @@ export default {
 			setTimeout(() => {
 				storage.setItem(SYSCONF.DBNAME, data)
 				resolve()
-			}, 500)
+			}, 100)
 		})
 	},
 	/**
@@ -25,7 +25,7 @@ export default {
 				} else {
 					reject(ret)
 				}
-			}, 5000)
+			}, 100)
 		})
 	}
 }

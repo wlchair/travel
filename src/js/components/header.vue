@@ -11,14 +11,16 @@ export default {
     methods: {
         createInfo(e) {
             const texts = e.target.value.trim()
-            let ret = this.$store.dispatch('todo/newTodo', {
-                value: texts,
-                type: SYSCONF.STATUS
-            });
-            if(isPromise(ret)){
-                ret.then(()=>{
-                    e.target.value = ""
-                })
+            if(texts){
+                let ret = this.$store.dispatch('todo/newTodo', {
+                    value: texts,
+                    type: SYSCONF.STATUS
+                });
+                if(isPromise(ret)){
+                    ret.then(()=>{
+                        e.target.value = ""
+                    })
+                }
             }
         }
     }

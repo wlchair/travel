@@ -44,7 +44,7 @@ export const mutations = {
 	 * @return {[type]}             [description]
 	 */
 	toggleAll(state, optionState) {
-		optionState = optionState === true ?
+		optionState = optionState === false ?
 			SYSCONF.STATUS : SYSCONF.OPPRSTATUS
 		state.todos.map((item) => {
 			return item.type = optionState

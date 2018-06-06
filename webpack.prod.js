@@ -11,6 +11,7 @@ const baseConfig = merge(base, {
 		vendor: ['Vue', 'Vuex']
 	},
 	output: {
+    	publicPath: '/',
 		filename: '[name].[chunkhash].js',
 		chunkFilename: '[name].chunk.js',
 	},

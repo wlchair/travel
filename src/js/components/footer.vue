@@ -1,5 +1,6 @@
 <template>
     <footer class="footer" v-show="todosLen">
+
         <span class="todo-count"><strong>{{activeNum}}</strong> {{activeNum | complex}} left</span>
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
@@ -9,8 +10,10 @@
                 </router-link>
             </li>
         </ul>
+
         <!-- Hidden if no completed items are left ↓ -->
-        <button class="clear-completed" @click="clearComplete">Clear completed</button>
+        <button class="clear-completed" 
+        v-show="todosLen > activeNum" @click="clearComplete">Clear completed</button>
     </footer>
 </template>
 <script>
@@ -33,16 +36,15 @@ const computed = {
 }
 const methods = {
     clearComplete() {
-        var $this = this;
         this.$store.dispatch('todo/reduceTodosByType',
-            SYSCONF.STATUS
+            SYSCONF.OPPRSTATUS
         )
     }
 }
 export default {
     data() {
         return {
-            filters: [SYSCONF.ALL, SYSCONF.OPPRSTATUS, SYSCONF.STATUS],
+            filters: [ SYSCONF.ALL,  SYSCONF.STATUS, SYSCONF.OPPRSTATUS ],
             stateTodo: this.$store.state.todo
         }
     },

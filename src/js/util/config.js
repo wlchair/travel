@@ -1,7 +1,7 @@
 export default {
 	//completed, active
-	STATUS: 'complete',
-	OPPRSTATUS: 'active',
+	STATUS: 'active',
+	OPPRSTATUS: 'completed',
 	ALL: 'all',
 
 	DBNAME: 'todomvc',
