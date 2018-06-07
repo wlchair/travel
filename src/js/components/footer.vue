@@ -1,26 +1,31 @@
 <template>
-    <footer class="footer" v-show="todosLen">
-
-        <span class="todo-count"><strong>{{activeNum}}</strong> {{activeNum | complex}} left</span>
-        <!-- Remove this if you don't implement routing -->
-        <ul class="filters">
-            <li v-for="(key,idx) in filters">
-                <router-link :to="'/'+ key" :class="{ selected: visiblity === key }">
-                    {{key | capitalize}}
-                </router-link>
-            </li>
-        </ul>
-
-        <!-- Hidden if no completed items are left ↓ -->
-        <button class="clear-completed" 
-        v-show="todosLen > activeNum" @click="clearComplete">Clear completed</button>
-    </footer>
+<footer class="footer"
+        v-show="todosLen">
+    <span class="todo-count"><strong>{{activeNum}}</strong> {{activeNum | complex}} left</span>
+    <!-- Remove this if you don't implement routing -->
+    <ul class="filters">
+        <li v-for="(key,idx) in filters">
+            <router-link :to="'/'+ key"
+                         :class="{ selected: visiblity === key }">
+                {{key | capitalize}}
+            </router-link>
+        </li>
+    </ul>
+    <!-- Hidden if no completed items are left ↓ -->
+    <button class="clear-completed"
+            v-show="todosLen > activeNum"
+            @click="clearComplete">Clear completed</button>
+</footer>
 </template>
+
 <script>
-import { mapActions } from '../lib/vuex'
 import SYSCONF from '../util/config'
-import { capitalize } from '../filters/capitalize'
-import { complex } from '../filters/complex'
+import {
+    capitalize
+} from '../filters/capitalize'
+import {
+    complex
+} from '../filters/complex'
 const computed = {
     visiblity() {
         return this.stateTodo.bar
@@ -44,7 +49,7 @@ const methods = {
 export default {
     data() {
         return {
-            filters: [ SYSCONF.ALL,  SYSCONF.STATUS, SYSCONF.OPPRSTATUS ],
+            filters: [SYSCONF.ALL, SYSCONF.STATUS, SYSCONF.OPPRSTATUS],
             stateTodo: this.$store.state.todo
         }
     },

@@ -1,28 +1,28 @@
 import SYSCONF from '../../util/config'
 import {
-	getters
+    getters
 } from './getters'
 import {
-	mutations
+    mutations
 } from './mutations'
 import {
-	actions
+    actions
 } from './actions'
 
 
 export default {
-	namespaced: true,
-	state: {
-		// {
-		//	id: 唯一标识
-		// 	type: active,completed
-		// 	value
-		// }
-		todos: [],
-		bar: SYSCONF.ALL,
-		readOnly: false
-	},
-	getters,
-	mutations,
-	actions
+    namespaced: true,
+    state: {
+        // {
+        //  id: 唯一标识
+        //  type: active,completed
+        //  value
+        // }
+        todos: [],
+        bar: SYSCONF.ALL,
+        readOnly: false
+    },
+    getters,
+    mutations,
+    actions
 }

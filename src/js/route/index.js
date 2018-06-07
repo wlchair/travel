@@ -5,17 +5,17 @@ import store from '../store'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-	mode: 'hash',
-	base: __dirname,
-	routes: [{
-		path: '/:active?',
-		props: (route) => {
-			const active = route.params.active
-			if (active) {
-				store.state.todo.bar = active
-			} else {
-				store.state.todo.bar = SYSCONF.ALL
-			}
-		}
-	}]
+    mode: 'hash',
+    base: __dirname,
+    routes: [{
+        path: '/:active?',
+        props: (route) => {
+            const active = route.params.active
+            if (active) {
+                store.state.todo.bar = active
+            } else {
+                store.state.todo.bar = SYSCONF.ALL
+            }
+        }
+    }]
 })

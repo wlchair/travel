@@ -8,9 +8,9 @@ import Inspect from '../plugins/inspect'
 import Record from '../plugins/record'
 Vue.use(Vuex)
 export default new Vuex.Store({
-	plugins: [Inspect, Record, Pstore],
-	modules: {
-		todo,
-		history
-	}
+    plugins: [Inspect, Record, Pstore],
+    modules: {
+        todo,
+        history
+    }
 })

@@ -1,24 +1,24 @@
 import {
-	mutations
+    mutations
 } from './mutations'
 import {
-	getters
+    getters
 } from './getters'
 import {
-	actions
+    actions
 } from './actions'
 
 export default {
-	namespaced: true,
-	state: {
-		// acts:{
-		// 	cmd:'',
-		// 	before:[]
-		// }
-		acts: [],
-		point: -1
-	},
-	getters,
-	mutations,
-	actions
+    namespaced: true,
+    state: {
+        // acts:{
+        //  cmd:'',
+        //  before:[]
+        // }
+        acts: [],
+        point: -1
+    },
+    getters,
+    mutations,
+    actions
 }

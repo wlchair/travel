@@ -19,12 +19,13 @@ const baseConfig = merge(base, {
     filename: 'bundle.web.js',
     chunkFilename: '[name].chunk.js'
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'runtime',
       filename: 'runtime.js'
-    }),
+    })
   ]
 })
 baseConfig.module.rules[0].loader = 'vue-loader'
