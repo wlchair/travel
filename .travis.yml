@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- 7
+script:
+- npm run test:unit
+- npm run test:e2e
+- npm run bulit
+git:
+  depth: false
+cache:
+  directories:
+  - node_modules

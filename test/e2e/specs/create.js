@@ -97,7 +97,7 @@ module.exports = {
       .assert.containsText('.todo-count strong', '2')
 
     // completed on page load
-    browser.url('http://localhost:8886/#/completed')
+    browser.url('http://localhost:8886/#/complete')
       .assert.count('.todo', 2)
       .assert.count('.todo.completed', 2)
       .assert.containsText('.todo-count strong', '2')

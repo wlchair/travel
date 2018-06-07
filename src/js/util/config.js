@@ -1,7 +1,7 @@
 export default {
     // completed, active
     STATUS: 'active',
-    OPPRSTATUS: 'completed',
+    OPPRSTATUS: 'complete',
     ALL: 'all',
     DBNAME: 'todomvc',
     // 是否action的行为到history对象里

@@ -16,8 +16,17 @@ module.exports = function(config) {
 		color: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		//'PhantomJS'
-		browsers: ['Chrome'],
+		browsers: ['Chrome_Headless'],
+		customLaunchers: {
+			Chrome_Headless: {
+				base: 'Chrome',
+				flags: [
+					'--headless',
+					'--disable-gpu',
+					'--remote-debugging-port=9222'
+				]
+			}
+		},
 		singleRun: false,
 		concurrency: Infinity,
 		webpack: unitConfig,
@@ -26,6 +35,10 @@ module.exports = function(config) {
 			fixWebpackSourcePaths: true
 		},
 		browserDisconnectTimeout: 20000,
-		browserNoActivityTimeout: 20000
+		browserNoActivityTimeout: 20000,
+		browserConsoleLogOptions: {
+			level: 'log',
+			terminal: true
+		},
 	})
 }

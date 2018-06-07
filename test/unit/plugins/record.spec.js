@@ -19,7 +19,7 @@ describe('record > ', () => {
 		initData = {
 			todo: {
 				todos: [],
-				bar: 'completed',
+				bar: 'complete',
 				readOnly: false
 			},
 			history: {
@@ -41,16 +41,17 @@ describe('record > ', () => {
 	});
 	it('normal input task', (done) => {
 		store.dispatch('todo/newTodo', completeItem).then(() => {
-			expect(store.state.history.acts.length).toBe(1);
 			done()
+			expect(store.state.history.acts.length).toBe(1);
 		})
 	});
 	it('not record action', (done) => {
 		(async function (){
 			await store.dispatch('todo/newTodo', completeItem)
 			await store.dispatch('history/changeAction', 'UNDO')
-			expect(store.state.todo.todos.length).toEqual(0)
 			done()
+			expect(store.state.todo.todos.length).toEqual(0)
+			
 		}())
 	});
 	it('not lastPosition, insert new Todo', () => {

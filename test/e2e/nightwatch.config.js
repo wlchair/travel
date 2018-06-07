@@ -14,7 +14,6 @@ module.exports = {
       'webdriver.chrome.driver': require('chromedriver').path
     }
   },
-
   'test_settings': {
     'default': {
       'selenium_port': 4444,
@@ -32,7 +31,13 @@ module.exports = {
       'desiredCapabilities': {
         'browserName': 'chrome',
         'javascriptEnabled': true,
-        'acceptSslCerts': true
+        'acceptSslCerts': true,
+        'chromeOptions': {
+          'args': [
+            '--headless',
+            '--disable-gpu'
+          ]
+        }
       }
     },
 
