@@ -22,8 +22,8 @@ module.exports = function(config) {
 			Chrome_Headless: {
 				base: 'Chrome',
 				flags: [
-					'--headless',
-					'--disable-gpu'
+					'--headless'
+					// '--disable-gpu'
 				]
 			}
 		},

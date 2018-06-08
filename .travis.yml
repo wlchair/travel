@@ -4,9 +4,10 @@ node_js:
 before_script:
   - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
 script:
+  - which chrome
   - npm run test:unit
-  - npm run test:e2e
-  - npm run bulit
+  # - npm run test:e2e
+  # - npm run bulit
 git:
   depth: false
 cache:

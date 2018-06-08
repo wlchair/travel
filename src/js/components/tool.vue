@@ -9,7 +9,9 @@
     </nav>
 </template>
 <script>
-import { mapActions } from '../lib/vuex'
+import {
+    mapActions
+} from '../lib/vuex'
 const methods = {
     ...mapActions('history', {
         undoOperation: 'changeAction',
