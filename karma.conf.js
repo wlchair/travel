@@ -15,27 +15,27 @@ module.exports = function(config) {
 		port: 9877,
 		color: true,
 		logLevel: config.LOG_INFO,
-		autoWatch: true,
+		autoWatch: false,
+		// Chrome_Headless
 		browsers: ['Chrome_Headless'],
 		customLaunchers: {
 			Chrome_Headless: {
 				base: 'Chrome',
 				flags: [
 					'--headless',
-					'--disable-gpu',
-					'--remote-debugging-port=9222'
+					'--disable-gpu'
 				]
 			}
 		},
-		singleRun: false,
+		singleRun: true,
 		concurrency: Infinity,
 		webpack: unitConfig,
 		coverageIstanbulReporter: {
 			reports: ['text-summary', 'html'],
 			fixWebpackSourcePaths: true
 		},
-		browserDisconnectTimeout: 20000,
-		browserNoActivityTimeout: 20000,
+		// browserDisconnectTimeout: 20000,
+		// browserNoActivityTimeout: 20000,
 		browserConsoleLogOptions: {
 			level: 'log',
 			terminal: true
