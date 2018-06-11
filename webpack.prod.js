@@ -8,7 +8,6 @@ const baseConfig = merge(base, {
 	devtool: 'source-map',
 	entry: {
 		main: './src/js/app.js',
-		vendor: ['Vue', 'Vuex']
 	},
 	output: {
     	publicPath: '/',
