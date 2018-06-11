@@ -5,11 +5,9 @@ sudo: required
 addons:
   chrome: stable
 before_script:
-  - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
+        # - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
 script:
-        #- npm run test:unit
-   - npm run test:e2e
-  # - npm run bulit
+   - npm run test:unit
 git:
   depth: false
 cache:
