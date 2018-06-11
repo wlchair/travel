@@ -49,10 +49,9 @@ module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
         files: ['test/test.js'],
-        browsers: ["ChromeHeadless "],
+        browsers: ["ChromeHeadless"],
         browserConsoleLogOptions: {
-            level: 'log',
-            terminal: true
+            level: 'log'
         },
         reporters: ['progress'],
         autoWatch: false,
