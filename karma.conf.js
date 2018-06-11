@@ -5,19 +5,19 @@ module.exports = function(config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            'test/test.js'
+            'test/unit/**/*.spec.js'
         ],
         exclude: ['src/js/lib/*.js'],
         preprocessors: {
-            // 'test/unit/**/*.spec.js': ['webpack']
+            'test/unit/**/*.spec.js': ['webpack']
         },
         reporters: ['progress'],
         port: 9877,
         color: true,
         logLevel: config.LOG_INFO,
-        autoWatch: true,
+        autoWatch: false,
         browsers: ['ChromeHeadless'],
-        singleRun: false,
+        singleRun: true,
         concurrency: Infinity,
         webpack: unitConfig,
         coverageIstanbulReporter: {
