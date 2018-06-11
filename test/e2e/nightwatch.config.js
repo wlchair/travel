@@ -35,7 +35,8 @@ module.exports = {
         'chromeOptions': {
           'args': [
             '--headless',
-            '--disable-gpu'
+            '--disable-gpu',
+            '--remote-debugging-port=9222'
           ]
         }
       }
