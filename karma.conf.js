@@ -11,21 +11,26 @@ module.exports = function(config) {
         preprocessors: {
             'test/unit/**/*.spec.js': ['webpack']
         },
-        reporters: ['progress'],
+        reporters: ['progress', 'coverage-istanbul'],
         port: 9877,
         color: true,
         logLevel: config.LOG_INFO,
         autoWatch: false,
-        browsers: ['ChromeHeadless'],
+        // ChromeHeadless
+        browsers: ['Chrome'],
         singleRun: true,
         concurrency: Infinity,
         webpack: unitConfig,
         coverageIstanbulReporter: {
-            reports: ['text-summary', 'html'],
+            reports: ['text-summary', 'html', 'lcovonly'],
             fixWebpackSourcePaths: true
         },
-        // browserDisconnectTimeout: 20000,
-        // browserNoActivityTimeout: 20000,
+        // coverageReporter:{
+        //     type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
+        //     dir: 'coverage/'
+        // }
+        browserDisconnectTimeout: 20000,
+        browserNoActivityTimeout: 20000,
         browserConsoleLogOptions: {
             level: 'log',
             terminal: true
