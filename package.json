@@ -6,7 +6,8 @@
         "lint": "webpack --config webpack.prod.js",
         "prod": "webpack --config webpack.prod.js && node prod-server.js",
         "test:e2e": "node test/e2e/runner.js",
-        "test:unit": "karma start && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+        "test:unit": "karma start",
+        "upcover": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
     },
     "peerDependencies": {},
     "dependencies": {

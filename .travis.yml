@@ -10,6 +10,7 @@ script:
   - npm run test:unit
   - npm run test:e2e
   - npm run lint
+  - npm run upcover
 git:
   depth: false
 cache:

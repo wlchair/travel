@@ -17,7 +17,7 @@ module.exports = function(config) {
         logLevel: config.LOG_INFO,
         autoWatch: false,
         // ChromeHeadless
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         singleRun: true,
         concurrency: Infinity,
         webpack: unitConfig,
@@ -25,10 +25,6 @@ module.exports = function(config) {
             reports: ['text-summary', 'html', 'lcovonly'],
             fixWebpackSourcePaths: true
         },
-        // coverageReporter:{
-        //     type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
-        //     dir: 'coverage/'
-        // }
         browserDisconnectTimeout: 20000,
         browserNoActivityTimeout: 20000,
         browserConsoleLogOptions: {
