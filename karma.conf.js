@@ -50,14 +50,6 @@ module.exports = function(config) {
         frameworks: ['jasmine'],
         files: ['test/test.js'],
         browsers: ["ChromeHeadless "],
-        customLaunchers: {
-            ChromeHeadless: {
-                base: 'Chrome',
-                flags: [
-                    '--headless'
-                ]
-            }
-        },
         browserConsoleLogOptions: {
             level: 'log',
             terminal: true
