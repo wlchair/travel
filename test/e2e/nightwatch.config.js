@@ -26,7 +26,6 @@ module.exports = {
         'path': 'test/e2e/screenshots'
       }
     },
-
     'chrome': {
       'desiredCapabilities': {
         'browserName': 'chrome',
@@ -39,14 +38,6 @@ module.exports = {
             '--remote-debugging-port=9222'
           ]
         }
-      }
-    },
-
-    'phantomjs': {
-      'desiredCapabilities': {
-        'browserName': 'phantomjs',
-        'javascriptEnabled': true,
-        'acceptSslCerts': true
       }
     }
   }
