@@ -1,8 +1,6 @@
 import SYSCONF from '../../util/config'
-import BuildID from '../../util/id'
 export const mutations = {
     create(state, item) {
-        item.id = BuildID()
         state.todos.push(item)
     },
     del(state, item) {
@@ -13,9 +11,19 @@ export const mutations = {
             state.todos.splice(idx, 1)
         }
     },
-    delByType(state, type) {
+    delByType(state, items) {
+        for (let i = 0, len = items.length; i < len; i++) {
+            const idx = state.todos.findIndex((todo) => {
+                return todo.id === items[i].id
+            })
+            if (idx !== -1) {
+                state.todos.splice(idx, 1)
+            }
+        }
+    },
+    delByLabelId(state, labelId) {
         const tmpArray = state.todos.filter((todo) => {
-            return todo.type !== type
+            return todo.labelId !== labelId
         })
         state.todos = tmpArray
     },

@@ -8,27 +8,30 @@
          :checked="checkboxStatus">
   <label for="toggle-all">Mark all as complete</label>
   <ul class="todo-list">
-    <view-task v-for="(item,idx) in statusList"
+    <view-task v-for="(item, idx) in statusList"
                :item="item"
                :key="item.id" />
+  </ul>
+  <ul class="label-list">
+    <view-label v-for="(item, idx) in labelList"
+                :item="item"
+                :key="item.id"/>
   </ul>
 </section>
 </template>
 <script>
-import {
-    createNamespacedHelpers
-} from '../lib/vuex'
 import ViewTask from './task.vue'
+import ViewLabel from './label.vue'
 import SYSCONF from '../util/config'
-
-const {
+import {
     mapGetters,
     mapActions
-} = createNamespacedHelpers('todo')
+} from '../lib/vuex'
 
 const computed = {
     ...mapGetters({
-        statusList: 'todosByType'
+        statusList: 'todo/todosByType',
+        labelList: 'label/labels'
     }),
     checkboxStatus() {
         if (this.statusList.length > 0) {
@@ -40,14 +43,15 @@ const computed = {
     }
 }
 const methods = mapActions({
-    changeAllState: 'modifyAllState'
+    changeAllState: 'todo/modifyAllState'
 })
 
 export default {
     computed,
     methods,
     components: {
-        ViewTask
+        ViewTask,
+        ViewLabel
     }
 }
 </script>

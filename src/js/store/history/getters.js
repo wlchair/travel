@@ -1,5 +1,5 @@
 export const getters = {
-    itemByType(state) {
+    itemsByType(state) {
         return function(type) {
             // 当undo时，获取当前point，就是需要重置的对象
             // 当redo时，需要在当前的point + 1，就是需要的对象

@@ -1,11 +1,15 @@
 import DB from '../../util/db'
 import send from '../../util/send'
 import CONFIG from '../../util/config'
+import BuildID from '../../util/id'
 export const actions = {
     newTodo({
         commit
     }, data) {
         return send({}, function() {
+            if (!data.id) {
+                data.id = BuildID()
+            }
             commit('create', data)
         })
     },
@@ -17,10 +21,21 @@ export const actions = {
         })
     },
     reduceTodosByType({
-        commit
+        commit,
+        state
     }, originType) {
         return send({}, function() {
-            commit('delByType', originType)
+            const tmpArray = state.todos.filter((todo) => {
+                return todo.type === originType
+            })
+            commit('delByType', tmpArray)
+        })
+    },
+    reduceTodosByLabelId({
+        commit
+    }, labelId) {
+        return send({}, function() {
+            commit('delByLabelId', labelId)
         })
     },
     modifyTodo({

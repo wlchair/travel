@@ -25,3 +25,6 @@ export function isMatch(ref, instance) {
     }
     return true
 }
+export function dataType(inpt) {
+    return toString.call(inpt).toLowerCase()
+}

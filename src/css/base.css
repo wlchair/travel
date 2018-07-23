@@ -12,3 +12,34 @@
 .nav button:hover{
 	border-color:rgba(175, 47, 47, 0.2);
 }
+
+.label-list{
+    border-top: 1px solid #ededed;
+    margin: 0;
+    list-style:none;
+    padding: 10px 10px 5px 10px;
+    overflow:hidden;
+}
+.label {
+    padding: 3px 30px 3px 10px;
+    float:left;
+    color:#fff;
+    font-weight: 700;
+    border-radius: 2px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    cursor: default;
+}
+.label:hover span{
+    display: block;
+}
+.label span{
+    display: none;
+    color:#fff;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    top: 4px;
+    width: 30px;
+}

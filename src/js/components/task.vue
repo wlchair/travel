@@ -6,7 +6,7 @@
            :checked="isChecked"
            class="toggle"
            @click="changeState(item)">
-    <label @dblclick="tabToEdit">{{item.value}}</label>
+    <label @dblclick="tabToEdit">{{item.value}} - {{item.labelId}}</label>
     <button class="destroy"
             @click="destoryTodo(item)"></button>
   </div>

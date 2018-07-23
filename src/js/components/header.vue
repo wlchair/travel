@@ -19,7 +19,8 @@ export default {
             if (texts) {
                 let ret = this.$store.dispatch('todo/newTodo', {
                     value: texts,
-                    type: SYSCONF.STATUS
+                    type: SYSCONF.STATUS,
+                    labelId: parseInt(Math.random() * 6, 10) + 100
                 })
                 if (isPromise(ret)) {
                     ret.then(() => {

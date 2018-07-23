@@ -8,15 +8,14 @@ import {
 import {
     actions
 } from './actions'
-
-
 export default {
     namespaced: true,
     state: {
         // {
         //  id: 唯一标识
-        //  type: active,completed
-        //  value
+        //  type: active, completed
+        //  value,
+        //  labelId
         // }
         todos: [],
         bar: SYSCONF.ALL,
