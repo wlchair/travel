@@ -2,13 +2,14 @@ import DB from '../../util/db'
 import send from '../../util/send'
 import CONFIG from '../../util/config'
 import BuildID from '../../util/id'
+let generatorID
 export const actions = {
     newTodo({
         commit
     }, data) {
         return send({}, function() {
             if (!data.id) {
-                data.id = BuildID()
+                data.id = generatorID()
             }
             commit('create', data)
         })
@@ -71,9 +72,14 @@ export const actions = {
     }) {
         await DB.fetchAllInfo().then((ret) => {
             CONFIG.RECORDMUTATION = false
+            let maxId = 0
             ret.forEach((item) => {
+                if (item.id != null) {
+                    maxId = Math.max(item.id, maxId)
+                }
                 commit('create', item)
             })
+            generatorID = BuildID(maxId)
             CONFIG.RECORDMUTATION = true
         }).catch((ret) => {
             throw new Error(ret)
